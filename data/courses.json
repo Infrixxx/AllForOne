@@ -1,1 +1,32 @@
- 
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Digital Banking with FNB",
+      "description": "Master FNB app, eWallets, and online banking safety",
+      "icon": "🏦",
+      "lessons": [
+        {
+          "title": "FNB App Basics",
+          "content": "Learn to navigate FNB's banking app: check balances, view transactions, and find important features. We'll cover the home screen, accounts tab, and quick actions."
+        },
+        {
+          "title": "Sending eWallets", 
+          "content": "Step-by-step guide to sending money via eWallet. Learn how to send to phone numbers, set passwords, and help recipients claim funds safely."
+        }
+      ]
+    },
+    {
+      "id": 2, 
+      "title": "Start a Spaza Shop Business",
+      "description": "From idea to daily operations - entrepreneurship for township economy",
+      "icon": "🛒",
+      "lessons": [
+        {
+          "title": "Business Registration",
+          "content": "Learn the simple steps to legally register your small business in South Africa. We cover CIPC registration, tax numbers, and local municipality requirements."
+        }
+      ]
+    }
+  ]
+}
