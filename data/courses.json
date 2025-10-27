@@ -2,29 +2,113 @@
   "courses": [
     {
       "id": 1,
-      "title": "Digital Banking with FNB",
-      "description": "Master FNB app, eWallets, and online banking safety",
+      "title": "FNB Digital Banking Mastery",
+      "description": "Master FNB app, eWallets, online banking and financial safety for everyday use",
       "icon": "🏦",
       "lessons": [
         {
-          "title": "FNB App Basics",
-          "content": "Learn to navigate FNB's banking app: check balances, view transactions, and find important features. We'll cover the home screen, accounts tab, and quick actions."
+          "title": "FNB App Navigation Basics",
+          "content": "Learn to navigate FNB's banking app interface. Find your accounts, transaction history, and quick action buttons for sending money and buying airtime."
         },
         {
-          "title": "Sending eWallets", 
-          "content": "Step-by-step guide to sending money via eWallet. Learn how to send to phone numbers, set passwords, and help recipients claim funds safely."
+          "title": "Sending eWallets Safely", 
+          "content": "Step-by-step guide to sending money via eWallet. Learn how to send to phone numbers, set passwords, and help recipients claim funds securely."
+        },
+        {
+          "title": "Buying Airtime & Data",
+          "content": "How to purchase airtime and data bundles for all networks directly from your FNB app. Save time and avoid airtime vendor queues."
+        },
+        {
+          "title": "Paying Bills & Electricity",
+          "content": "Pay municipal bills, DStv, and buy prepaid electricity tokens through the FNB app. Set up recurring payments for convenience."
+        },
+        {
+          "title": "Security & Fraud Prevention",
+          "content": "Protect your banking information. Learn to recognize phishing scams, secure your app with biometrics, and monitor transactions."
         }
       ]
     },
     {
       "id": 2, 
-      "title": "Start a Spaza Shop Business",
-      "description": "From idea to daily operations - entrepreneurship for township economy",
+      "title": "Spaza Shop Business Success",
+      "description": "Start and grow your township spaza shop - from registration to daily profits",
       "icon": "🛒",
       "lessons": [
         {
-          "title": "Business Registration",
-          "content": "Learn the simple steps to legally register your small business in South Africa. We cover CIPC registration, tax numbers, and local municipality requirements."
+          "title": "Business Registration & Licensing",
+          "content": "Complete guide to legally register your spaza shop with CIPC, get trading licenses from your local municipality, and understand tax requirements."
+        },
+        {
+          "title": "Stock Management & Suppliers",
+          "content": "Learn how to source affordable stock from wholesalers like Makro and Cash & Carry. Manage inventory and avoid stockouts of popular items."
+        },
+        {
+          "title": "Pricing & Profit Margins",
+          "content": "Set competitive prices while maintaining healthy profit margins. Understand markups for different product categories in township markets."
+        },
+        {
+          "title": "Customer Service & Loyalty",
+          "content": "Build customer loyalty in your community. Learn simple techniques like remembering names, offering credit to trusted customers, and stocking preferred items."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Online Safety for South Africans",
+      "description": "Protect yourself from digital scams, secure personal information, and browse safely",
+      "icon": "🔒",
+      "lessons": [
+        {
+          "title": "Spotting SA Online Scams",
+          "content": "Identify common South African online scams including fake job offers, inheritance scams, and fraudulent online shopping sites."
+        },
+        {
+          "title": "Secure Social Media Use",
+          "content": "Protect your personal information on Facebook, WhatsApp, and other platforms. Avoid sharing location data and personal details publicly."
+        },
+        {
+          "title": "Mobile Banking Security",
+          "content": "Best practices for securing your banking apps. Enable biometric authentication, avoid public WiFi for transactions, and recognize fake banking SMSs."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Basic Digital Literacy",
+      "description": "Essential computer and smartphone skills for beginners - from typing to apps",
+      "icon": "📱",
+      "lessons": [
+        {
+          "title": "Smartphone Basics",
+          "content": "Master your smartphone: make calls, send messages, take photos, download apps, and manage storage space effectively."
+        },
+        {
+          "title": "Internet & Email Basics",
+          "content": "Learn to browse the internet safely, create and use email accounts (Gmail), and understand basic online terminology."
+        },
+        {
+          "title": "Using WhatsApp for Business",
+          "content": "Use WhatsApp Business features to promote your small business, create product catalogs, and communicate with customers professionally."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Job Search & CV Writing",
+      "description": "Find employment opportunities and create professional CVs for the SA job market",
+      "icon": "💼",
+      "lessons": [
+        {
+          "title": "Creating a Winning CV",
+          "content": "Step-by-step guide to writing a professional CV that stands out to South African employers. Formatting tips and essential sections to include."
+        },
+        {
+          "title": "Online Job Platforms",
+          "content": "Navigate popular SA job sites like Indeed, CareerJunction, and LinkedIn. Create profiles and set up job alerts for new opportunities."
+        },
+        {
+          "title": "Interview Preparation",
+          "content": "Prepare for job interviews with common questions, professional presentation tips, and follow-up strategies that impress employers."
         }
       ]
     }

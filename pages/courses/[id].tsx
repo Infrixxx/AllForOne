@@ -1,68 +1,36 @@
- import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
+import coursesData from '../../data/courses.json';
+
+interface Lesson {
+  title: string;
+  content: string;
+}
+
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+  lessons: Lesson[];
+}
 
 export default function CourseDetail() {
   const router = useRouter();
   const { id } = router.query;
   const [currentLesson, setCurrentLesson] = useState(0);
 
-  const courses = {
-    1: {
-      title: 'Digital Banking Basics',
-      description: 'Learn how to use online banking, mobile apps, and digital payments safely.',
-      icon: '🏦',
-      lessons: [
-        {
-          title: 'Introduction to Digital Banking',
-          content: 'Digital banking allows you to manage your money anytime, anywhere using your computer or smartphone. You can check balances, transfer money, pay bills, and more without visiting a bank branch.',
-          videoUrl: '#'
-        },
-        {
-          title: 'Setting Up Mobile Banking',
-          content: 'Download your bank\'s official app from the app store. Follow the registration process, which usually involves verifying your identity and creating secure login credentials.',
-          videoUrl: '#'
-        }
-      ]
-    },
-    2: {
-      title: 'Starting a Small Business',
-      description: 'Essential skills for entrepreneurs: planning, funding, and growing your business.',
-      icon: '💼',
-      lessons: [
-        {
-          title: 'Business Idea Validation',
-          content: 'Before starting, research your market to ensure there is demand for your product or service. Talk to potential customers and analyze competitors.',
-          videoUrl: '#'
-        },
-        {
-          title: 'Creating a Business Plan',
-          content: 'A business plan outlines your goals, target market, financial projections, and operational strategy. It\'s essential for securing funding and guiding your growth.',
-          videoUrl: '#'
-        }
-      ]
-    },
-    3: {
-      title: 'Online Safety & Security',
-      description: 'Protect yourself from scams and secure your personal information online.',
-      icon: '🔒',
-      lessons: [
-        {
-          title: 'Creating Strong Passwords',
-          content: 'Use a combination of uppercase and lowercase letters, numbers, and symbols. Avoid using personal information and never reuse passwords across different accounts.',
-          videoUrl: '#'
-        },
-        {
-          title: 'Recognizing Phishing Scams',
-          content: 'Be cautious of emails or messages asking for personal information. Legitimate companies will never ask for passwords via email. Check sender addresses and look for spelling errors.',
-          videoUrl: '#'
-        }
-      ]
-    }
-  };
+  // Fix: Properly type the courses object
+  const courses = coursesData.courses.reduce((acc: { [key: string]: Course }, course) => {
+    acc[course.id.toString()] = course;
+    return acc;
+  }, {} as { [key: string]: Course });
 
-  const course = courses[id];
+  // Fix: Handle the id being potentially undefined or an array
+  const courseId = Array.isArray(id) ? id[0] : id;
+  const course = courseId ? courses[courseId] : null;
 
   if (!course) {
     return (

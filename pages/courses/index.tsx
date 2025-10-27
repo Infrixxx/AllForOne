@@ -1,33 +1,13 @@
- import Head from 'next/head';
+import Head from 'next/head';
 import Link from 'next/link';
+import coursesData from '../../data/courses.json';
 
 export default function Courses() {
-  const courses = [
-    {
-      id: 1,
-      title: 'Digital Banking Basics',
-      description: 'Learn how to use online banking, mobile apps, and digital payments safely.',
-      duration: '2 hours',
-      lessons: 5,
-      icon: '🏦'
-    },
-    {
-      id: 2,
-      title: 'Starting a Small Business',
-      description: 'Essential skills for entrepreneurs: planning, funding, and growing your business.',
-      duration: '3 hours',
-      lessons: 6,
-      icon: '💼'
-    },
-    {
-      id: 3,
-      title: 'Online Safety & Security',
-      description: 'Protect yourself from scams and secure your personal information online.',
-      duration: '1.5 hours',
-      lessons: 4,
-      icon: '🔒'
-    }
-  ];
+  const courses = coursesData.courses.map(course => ({
+    ...course,
+    duration: '2 hours',
+    lessons: course.lessons.length
+  }));
 
   return (
     <div className="min-h-screen bg-gray-50">

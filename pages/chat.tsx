@@ -1,76 +1,48 @@
- import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import AIChat from '../components/AIChat';
 
-export default function Chat() {
-  const [messages, setMessages] = useState([
-    { id: 1, text: "Hello! I'm your AI tutor. I can help you with any questions about the courses you're taking. What would you like to know?", isUser: false }
-  ]);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef(null);
+export default function ChatPage() {
+  const [selectedCourse, setSelectedCourse] = useState('General Learning');
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleSend = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const userMessage = { id: Date.now(), text: input, isUser: true };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setLoading(true);
-
-    setTimeout(() => {
-      const aiResponses = [
-        "That's a great question! In digital banking, you should always use strong passwords and enable two-factor authentication for security.",
-        "For starting a small business, I recommend beginning with market research to understand your potential customers.",
-        "Online safety is crucial. Never share your passwords and always verify website URLs before entering personal information.",
-        "I can help explain that concept in more detail. Which specific part would you like me to focus on?",
-        "That's an important topic! Let me break it down into simpler steps for better understanding."
-      ];
-      
-      const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
-      const aiMessage = { id: Date.now() + 1, text: randomResponse, isUser: false };
-      
-      setMessages(prev => [...prev, aiMessage]);
-      setLoading(false);
-    }, 1500);
-  };
+  const courses = [
+    { id: 'digital', name: 'Digital Literacy' },
+    { id: 'business', name: 'Entrepreneurship' },
+    { id: 'money', name: 'Financial Skills' },
+    { id: 'jobs', name: 'Job Readiness' },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       <Head>
         <title>AI Tutor - AllForOne</title>
+        <meta name="description" content="Chat with your AI learning assistant" />
       </Head>
 
+      {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <Link href="/">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">A</span>
-                </div>
-              </Link>
+            <Link href="/" className="flex items-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">A</span>
+              </div>
               <span className="ml-3 text-xl font-bold text-gray-900">AllForOne</span>
-            </div>
+            </Link>
             
             <nav className="flex space-x-8">
               <Link href="/courses" className="text-gray-600 hover:text-gray-900 font-medium">
                 Courses
               </Link>
-              <Link href="/chat" className="text-blue-600 font-medium">
-                AI Tutor
-              </Link>
               <Link href="/" className="text-gray-600 hover:text-gray-900 font-medium">
                 Home
+              </Link>
+              <Link 
+                href="/register" 
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >
+                Sign Up
               </Link>
             </nav>
           </div>
@@ -78,63 +50,116 @@ export default function Chat() {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 h-[600px] flex flex-col">
-          <div className="p-6 border-b border-gray-200">
-            <h1 className="text-2xl font-bold text-gray-900">AI Learning Assistant</h1>
-            <p className="text-gray-600">Ask me anything about the courses you're studying</p>
-          </div>
+        {/* Hero Section */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Your AI Learning Assistant
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Get personalized help with digital skills, entrepreneurship, financial literacy, and job readiness. 
+            Powered by DeepSeek AI to provide you with relevant, practical guidance for South Africa.
+          </p>
+        </div>
 
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
-              >
-                <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                    message.isUser
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 text-gray-900'
-                  }`}
-                >
-                  {message.text}
-                </div>
-              </div>
-            ))}
-            
-            {loading && (
-              <div className="flex justify-start">
-                <div className="bg-gray-100 text-gray-900 rounded-2xl px-4 py-3">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            <div ref={messagesEndRef} />
+        {/* Course Selection */}
+        <div className="bg-white rounded-xl shadow-sm p-6 mb-8 border border-gray-200">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Learning Focus</h2>
+              <p className="text-gray-600">Select a topic to help me provide better guidance</p>
+            </div>
+            <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+              AI Powered
+            </div>
           </div>
-
-          <div className="p-6 border-t border-gray-200">
-            <form onSubmit={handleSend} className="flex space-x-4">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask a question about your courses..."
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                disabled={loading}
-              />
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {courses.map(course => (
               <button
-                type="submit"
-                disabled={loading || !input.trim()}
-                className="bg-blue-500 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                key={course.id}
+                onClick={() => setSelectedCourse(course.name)}
+                className={`p-3 rounded-lg border-2 text-center transition-all ${
+                  selectedCourse === course.name
+                    ? 'border-blue-500 bg-blue-50 text-blue-700'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                }`}
               >
-                Send
+                <div className="font-medium">{course.name}</div>
               </button>
-            </form>
+            ))}
+          </div>
+        </div>
+
+        {/* AI Chat Component */}
+        <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+          <AIChat courseContext={selectedCourse} />
+        </div>
+
+        {/* Tips & Examples */}
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-3 flex items-center">
+              <span className="text-lg mr-2">💡</span>
+              Tips for Best Results
+            </h3>
+            <ul className="text-blue-800 space-y-2">
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Ask specific questions about what you're learning</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Request examples relevant to South Africa</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Ask for step-by-step instructions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Request practical exercises or next steps</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+            <h3 className="font-semibold text-green-900 mb-3 flex items-center">
+              <span className="text-lg mr-2">🎯</span>
+              Example Questions
+            </h3>
+            <ul className="text-green-800 space-y-2">
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>"How do I create a WhatsApp business account?"</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>"What small business can I start with R500?"</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>"How do I write a simple CV with no experience?"</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>"What are basic online safety tips?"</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Offline Notice */}
+        <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div className="flex items-center">
+            <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+              <span className="text-yellow-600 text-sm">📱</span>
+            </div>
+            <div>
+              <h4 className="font-semibold text-yellow-800">Offline Learning Ready</h4>
+              <p className="text-yellow-700 text-sm">
+                While the AI chat requires internet, all our courses and learning materials work offline once downloaded.
+              </p>
+            </div>
           </div>
         </div>
       </main>
