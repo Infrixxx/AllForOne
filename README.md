@@ -229,19 +229,19 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ## 🎯 Future Enhancements
 
-### Phase 2 (Q2 2024)
+### Phase 2 (Q2 2025)
 - [ ] **Firebase Integration** - User authentication and data sync
 - [ ] **Advanced AI Tutor** - GPT-4 integration for better responses
 - [ ] **Gamification** - Points, leaderboards, and rewards
 - [ ] **Multi-language Support** - Zulu, Xhosa, and other local languages
 
-### Phase 3 (Q3 2024)
+### Phase 3 (Q3 2025)
 - [ ] **Mobile App** - React Native cross-platform application
 - [ ] **Offline AI Models** - Local ML for enhanced offline capabilities
 - [ ] **Content Marketplace** - Partner course integrations
 - [ ] **Enterprise Features** - Group learning and progress tracking
 
-### Phase 4 (Q4 2024)
+### Phase 4 (Q4 2025)
 - [ ] **VR Learning** - Immersive educational experiences
 - [ ] **Skills Certification** - Accredited digital certificates
 - [ ] **Job Marketplace** - Connect learners with opportunities
