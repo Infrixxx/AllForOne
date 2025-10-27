@@ -152,14 +152,14 @@ export default function Home() {
                   title="DIGITAL LITERACY"
                   status="IN PROGRESS"
                   subtitle="Master essential digital skills - Email, browsing, online safety"
-                  date="Last updated Thu 06 April 2024"
+                  date="Last updated Thu 06 April 2025"
                   tag="BEGINNER"
                 />
                 <ProjectCard
                   title="AI FUNDAMENTALS"
                   status="AVAILABLE"
                   subtitle="Understanding artificial intelligence and its practical applications"
-                  date="Last updated Thu 06 April 2024"
+                  date="Last updated Thu 06 April 2025"
                   tag="INTERMEDIATE"
                 />
               </div>
